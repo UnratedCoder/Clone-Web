@@ -7,6 +7,7 @@ import FloatingActions from "@/components/FloatingActions";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
+import PromoBanner from "@/components/PromoBanner";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -41,6 +42,7 @@ export default function RootLayout({
         <Footer />
         <FloatingActions />
         <CookieBanner />
+        <PromoBanner />
       </body>
     </html>
   );

@@ -5,20 +5,18 @@ import { useEffect, useState, useRef } from "react";
 
 // Asset Image URLs from Unsplash representing premium private theatres
 const HERO_IMAGES = [
-  "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?q=80&w=1920", // Intimate romance/candles
-  "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?q=80&w=1920", // Balloons and birthday lights
-  "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1920", // Sparkling fairy lights
-  "https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=1920", // Candle floor pathway
-  "https://images.unsplash.com/photo-1595769816263-9b910be24d5f?q=80&w=1920", // Luxury private screening recliners
+  "https://dazzlingscreens.com/media/site/home/hero/candel-pathANMC3778.avif",
+  "https://dazzlingscreens.com/media/site/home/hero/happy-birthday-decor.avif",
+  "https://dazzlingscreens.com/media/site/home/hero/hero-background-1.jpg",
 ];
 
 const SERVICES = [
-  { id: "001", title: "BOUQUET", label: "Floral Styling", img: "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?q=80&w=500" },
-  { id: "002", title: "BIRTHDAY", label: "Private Screening", img: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?q=80&w=500" },
-  { id: "003", title: "PHOTOSHOOT", label: "Captured Memories", img: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=500" },
-  { id: "004", title: "DECOR", label: "Premium Styling", img: "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?q=80&w=500" },
-  { id: "005", title: "CAKE", label: "Sweet Celebrations", img: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=500" },
-  { id: "006", title: "GIFTS", label: "Thoughtful Moments", img: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=500" },
+  { id: "001", title: "BOUQUET", label: "Floral Styling", img: "https://dazzlingscreens.com/media/site/home/sections/bouquet.jpg" },
+  { id: "002", title: "BIRTHDAY", label: "Private Screening", img: "https://dazzlingscreens.com/media/site/home/sections/private-screening.webp" },
+  { id: "003", title: "PHOTOSHOOT", label: "Captured Memories", img: "https://dazzlingscreens.com/media/site/home/sections/photoshoot.webp" },
+  { id: "004", title: "DECOR", label: "Premium Styling", img: "https://dazzlingscreens.com/media/site/home/sections/decoration.webp" },
+  { id: "005", title: "CAKE", label: "Sweet Celebrations", img: "https://dazzlingscreens.com/media/site/home/sections/cake.webp" },
+  { id: "006", title: "GIFTS", label: "Thoughtful Moments", img: "https://dazzlingscreens.com/media/site/home/sections/gits.webp" },
 ];
 
 const VIDEOS = [
@@ -340,21 +338,21 @@ export default function Home() {
       {/* 3. OUR SERVICES */}
       <section className="bg-[#f8f5ef] px-4 py-16 sm:px-6 md:py-20 overflow-hidden">
         <div className="max-w-7xl mx-auto relative">
-          <div className="mb-8 flex items-center justify-between">
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-[#0f1115] font-serif">
-              Our Celebration Add-ons
+          <div className="mb-8 text-center relative">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0f1115] font-serif inline-block">
+              Our Services
             </h2>
-            <div className="flex gap-2">
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 hidden md:flex gap-2">
               <button
                 onClick={() => scrollServices("left")}
-                className="w-10 h-10 rounded-full border border-black/10 bg-white flex items-center justify-center hover:bg-gray-55 shadow-sm transition active:scale-95"
+                className="w-10 h-10 rounded-full border border-black/10 bg-white flex items-center justify-center hover:bg-gray-50 shadow-sm transition active:scale-95 text-gray-700"
                 aria-label="Scroll left"
               >
                 ←
               </button>
               <button
                 onClick={() => scrollServices("right")}
-                className="w-10 h-10 rounded-full border border-black/10 bg-white flex items-center justify-center hover:bg-gray-55 shadow-sm transition active:scale-95"
+                className="w-10 h-10 rounded-full border border-black/10 bg-white flex items-center justify-center hover:bg-gray-50 shadow-sm transition active:scale-95 text-gray-700"
                 aria-label="Scroll right"
               >
                 →

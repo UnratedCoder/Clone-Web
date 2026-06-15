@@ -18,10 +18,7 @@ export default function Header() {
     pathname === "/refund-policy" ||
     pathname === "/cancellation-policy";
 
-  const linkColorClass =
-    isScrolled || isBooking || isLegal
-      ? "text-gray-800 hover:text-yellow-600"
-      : "text-white hover:text-[#FFD700]";
+  const linkColorClass = "text-[#111111] hover:text-yellow-600 transition-colors duration-200 font-semibold";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -83,35 +80,31 @@ export default function Header() {
       <header
         className={`w-full transition-all duration-300 pointer-events-auto ${
           isBooking
-            ? "bg-white border-b border-gray-300 py-2.5 shadow-sm text-gray-800"
+            ? "bg-white border-b border-gray-300 py-2.5 shadow-sm text-gray-850"
             : isLegal
-            ? "bg-white border-b border-gray-200 py-3 shadow-sm text-gray-800"
+            ? "bg-white border-b border-gray-200 py-3 shadow-sm text-gray-850"
             : isScrolled
-            ? "bg-white/95 border-b border-gray-200/80 backdrop-blur-md py-3 shadow-md text-gray-800"
-            : "bg-transparent py-4 text-white"
+            ? "bg-white/95 border-b border-gray-200/80 backdrop-blur-md py-3 shadow-md text-gray-900"
+            : "bg-white/45 border-b border-black/5 backdrop-blur-md py-3.5 text-gray-900"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Logo Badge */}
           <Link href="/" className="flex items-center cursor-pointer">
-            <div className="bg-[#FFD700] rounded-full flex flex-col items-center justify-center w-12 h-12 sm:w-14 sm:h-14 shadow-lg hover:scale-103 transition-transform">
-              <svg viewBox="0 0 24 24" className="w-6 h-6 text-black" fill="currentColor">
-                <circle cx="8" cy="7" r="2.5" />
-                <circle cx="16" cy="7" r="2.5" />
-                <rect x="5" y="10" width="14" height="6" rx="1" />
-                <polygon points="19 11.5 22 9 22 17 19 14.5" />
-                <line x1="12" y1="16" x2="9" y2="21" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                <line x1="12" y1="16" x2="15" y2="21" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-              </svg>
-              <span className="text-[5.5px] font-extrabold text-black uppercase tracking-tighter leading-none mt-0.5 font-sans">
-                Dazzling Screens
-              </span>
-            </div>
+            <img
+              src="/assets/logo.png"
+              alt="Dazzling Screens Logo"
+              className="h-[60px] w-[60px] md:h-[70px] md:w-[70px] bg-[#FFD700] rounded-full object-contain p-1.5 shadow-lg transition-all hover:scale-105"
+            />
           </Link>
 
           {/* Desktop Navigation */}
           {!isBooking && (
-            <nav className="hidden md:flex items-center gap-8 font-semibold text-xs sm:text-sm tracking-wide uppercase">
+            <nav className="relative hidden md:flex items-center gap-8 font-semibold text-xs sm:text-sm tracking-wide">
+              {/* Yellow glow background behind navbar links */}
+              <div 
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[55px] bg-[radial-gradient(circle,rgba(255,223,0,0.5)_0%,rgba(255,223,0,0)_75%)] pointer-events-none -z-10 blur-sm"
+              />
               <Link
                 href="/"
                 className={`transition-colors ${linkColorClass}`}
@@ -161,11 +154,7 @@ export default function Header() {
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 type="button"
-                className={`p-2 rounded-lg transition ${
-                  isScrolled || isBooking || isLegal
-                    ? "text-gray-800 hover:bg-gray-100"
-                    : "text-white hover:bg-white/10"
-                }`}
+                className="p-2 rounded-lg transition text-gray-800 hover:bg-black/5"
                 aria-label="Toggle menu"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -183,64 +172,40 @@ export default function Header() {
         {/* Mobile Drawer */}
         {isOpen && !isBooking && (
           <div
-            className={`md:hidden absolute top-full left-0 w-full border-b py-6 px-5 flex flex-col gap-4 shadow-2xl animate-fadeIn pointer-events-auto transition-colors duration-300 ${
-              isScrolled || isLegal
-                ? "bg-white border-gray-200"
-                : "bg-[#0f1115] border-white/10"
-            }`}
+            className="md:hidden absolute top-full left-0 w-full border-b py-6 px-5 flex flex-col gap-4 shadow-2xl animate-fadeIn pointer-events-auto transition-colors duration-300 bg-white/95 backdrop-blur-md border-gray-200 text-gray-900"
           >
             <Link
               href="/"
               onClick={() => setIsOpen(false)}
-              className={`font-semibold text-sm py-2 border-b uppercase tracking-wider transition-colors ${
-                isScrolled || isLegal
-                  ? "text-gray-800 border-gray-100 hover:text-yellow-600"
-                  : "text-white border-white/5 hover:text-[#FFD700]"
-              }`}
+              className="font-semibold text-sm py-2 border-b border-gray-100 transition-colors text-gray-800 hover:text-yellow-600"
             >
               Home
             </Link>
             <Link
               href="/gallery"
               onClick={() => setIsOpen(false)}
-              className={`font-semibold text-sm py-2 border-b uppercase tracking-wider transition-colors ${
-                isScrolled || isLegal
-                  ? "text-gray-800 border-gray-100 hover:text-yellow-600"
-                  : "text-white border-white/5 hover:text-[#FFD700]"
-              }`}
+              className="font-semibold text-sm py-2 border-b border-gray-100 transition-colors text-gray-800 hover:text-yellow-600"
             >
               Gallery
             </Link>
             <Link
               href="/about"
               onClick={() => setIsOpen(false)}
-              className={`font-semibold text-sm py-2 border-b uppercase tracking-wider transition-colors ${
-                isScrolled || isLegal
-                  ? "text-gray-800 border-gray-100 hover:text-yellow-600"
-                  : "text-white border-white/5 hover:text-[#FFD700]"
-              }`}
+              className="font-semibold text-sm py-2 border-b border-gray-100 transition-colors text-gray-800 hover:text-yellow-600"
             >
               About
             </Link>
             <Link
               href="/waitlist"
               onClick={() => setIsOpen(false)}
-              className={`font-semibold text-sm py-2 border-b uppercase tracking-wider transition-colors ${
-                isScrolled || isLegal
-                  ? "text-gray-800 border-gray-100 hover:text-yellow-600"
-                  : "text-white border-white/5 hover:text-[#FFD700]"
-              }`}
+              className="font-semibold text-sm py-2 border-b border-gray-100 transition-colors text-gray-800 hover:text-yellow-600"
             >
               Join Waitlist
             </Link>
             <Link
               href="/contact"
               onClick={() => setIsOpen(false)}
-              className={`font-semibold text-sm py-2 border-b uppercase tracking-wider transition-colors ${
-                isScrolled || isLegal
-                  ? "text-gray-800 border-gray-100 hover:text-yellow-600"
-                  : "text-white border-white/5 hover:text-[#FFD700]"
-              }`}
+              className="font-semibold text-sm py-2 border-b border-gray-100 transition-colors text-gray-800 hover:text-yellow-600"
             >
               Contact
             </Link>
